@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    kompose.cmd: kompose convert
+    kompose.cmd: kompose convert -f docker-compose.yaml
     kompose.version: 1.22.0 (955b78124)
   creationTimestamp: null
   labels:
@@ -17,7 +17,7 @@ spec:
   template:
     metadata:
       annotations:
-        kompose.cmd: kompose convert
+        kompose.cmd: kompose convert -f docker-compose.yaml
         kompose.version: 1.22.0 (955b78124)
       creationTimestamp: null
       labels:
@@ -28,7 +28,7 @@ spec:
         - env:
             - name: BACKEND_DNS
               value: backend
-          image: schachster/fortune_cookie:frontend
+          image: schachster/simple-fortune-cookie-frontend:latest
           name: frontendcontainer
           ports:
             - containerPort: 8080
